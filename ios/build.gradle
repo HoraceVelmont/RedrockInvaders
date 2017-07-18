@@ -4,7 +4,7 @@ sourceCompatibility = '1.7'
 [compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
 
 ext {
-	mainClassName = "web.game.people.IOSLauncher"
+	mainClassName = "redrock.invadrs.game.IOSLauncher"
 }
 
 launchIPhoneSimulator.dependsOn build

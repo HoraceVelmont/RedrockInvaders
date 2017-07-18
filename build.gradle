@@ -23,7 +23,7 @@ allprojects {
 
     version = '1.0.0'
     ext {
-        appName = 'The People'
+        appName = 'Redrock Invaders'
         mini2DxVersion = '1.5.2'
         gdxVersion = '1.9.6'
         roboVMVersion = '2.3.0'
@@ -81,25 +81,25 @@ project(":desktop") {
     parcl {
         exe {
             vmArgs = ["-Xmx1g"]
-            exeName = "The People"
+            exeName = "Redrock Invaders"
         }
         app {
             vmArgs = ["-Xmx1g"]
-            appName = "The People"
+            appName = "Redrock Invaders"
             icon = "icon.icns"
             applicationCategory = "public.app-category.simulation-games"
-            displayName = "The People"
-            identifier = "The People"
-            copyright = "Copyright 2017 Velmont Games"
+            displayName = "Redrock Invaders"
+            identifier = "Redrock Invaders"
+            copyright = "Copyright 2017 Doping House"
         }
         linux {
             vmArgs = ["-Xmx1g"]
-            binName = "The People"
+            binName = "Redrock Invaders"
         }
     }
     butler {
         user = "your-itchio-user"
-        game = "The People"
+        game = "Redrock Invaders"
         windows {
             binDirectory = "$buildDir/windows"
         }

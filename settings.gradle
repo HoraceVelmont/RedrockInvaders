@@ -1,2 +1,2 @@
 include 'core', 'desktop', 'android', 'ios'
-rootProject.name = 'The People'
+rootProject.name = 'Redrock Invaders'

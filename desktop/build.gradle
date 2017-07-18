@@ -3,7 +3,7 @@ apply plugin: "application"
 sourceCompatibility = 1.7
 sourceSets.main.java.srcDirs = [ "src/" ]
 
-mainClassName = "web.game.people.desktop.DesktopLauncher"
+mainClassName = "redrock.invaders.game.desktop.DesktopLauncher"
 project.ext.assetsDir = new File("../assets");
 
 sourceSets.main.resources.srcDirs = [project.ext.assetsDir.getAbsolutePath()]

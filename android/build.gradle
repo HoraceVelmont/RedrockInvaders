@@ -67,7 +67,7 @@ task launchAndroid(type: Exec, dependsOn: ':android:installDebug') {
     }
 
     def adb = path + "/platform-tools/adb"
-    commandLine "$adb", 'shell', 'am', 'start', '-n', 'web.game.people.android/web.game.people.android.AndroidLauncher'
+    commandLine "$adb", 'shell', 'am', 'start', '-n', 'redrock.inavaders.game.android/redrock.invaders.game.android.AndroidLauncher'
 }
 
 // sets up the Android Eclipse project, using the old Ant based build.
