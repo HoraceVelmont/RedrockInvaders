@@ -11,8 +11,7 @@ import org.mini2Dx.core.screen.transition.FadeOutTransition;
 /**
  * Created by Velmont on 2017-07-10.
  */
-public class LoadingScreen extends PeopleScreen {
-
+public class LoadingScreen extends InvaderScreen {
     private float loadingTime = 4f;
 
     public LoadingScreen(AssetManager assetManager) {

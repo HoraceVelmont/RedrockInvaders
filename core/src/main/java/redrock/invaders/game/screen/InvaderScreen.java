@@ -9,13 +9,12 @@ import redrock.invaders.game.gameData.UserData;
 /**
  * Created by Velmont on 2017-07-03.
  */
-public abstract class PeopleScreen extends BasicGameScreen {
+public abstract class InvaderScreen extends BasicGameScreen {
     protected AssetManager assetManager;
     protected UiContainer uiContainer;
-    @Autowired
     protected UserData userData;
 
-    public PeopleScreen(AssetManager assetManager){
+    public InvaderScreen(AssetManager assetManager){
         this.assetManager = assetManager;
     }
 }

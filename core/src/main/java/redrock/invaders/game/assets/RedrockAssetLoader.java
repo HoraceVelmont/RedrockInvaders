@@ -6,9 +6,15 @@ import com.badlogic.gdx.assets.loaders.FileHandleResolver;
 import com.badlogic.gdx.assets.loaders.resolvers.ClasspathFileHandleResolver;
 import com.badlogic.gdx.assets.loaders.resolvers.InternalFileHandleResolver;
 import com.badlogic.gdx.audio.Music;
+import com.badlogic.gdx.controllers.Controller;
+import com.badlogic.gdx.controllers.ControllerAdapter;
+import com.badlogic.gdx.controllers.Controllers;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.badlogic.gdx.utils.Array;
+import lombok.Getter;
+import lombok.Setter;
 import org.mini2Dx.core.assets.FallbackFileHandleResolver;
 import org.mini2Dx.ui.UiThemeLoader;
 import org.mini2Dx.ui.style.UiTheme;
@@ -18,6 +24,7 @@ import org.mini2Dx.ui.style.UiTheme;
  */
 public class RedrockAssetLoader {
     public static void loadAll(AssetManager assetManager){
+
         loadUi(assetManager);
         loadAtlas(assetManager);
         loadEtc(assetManager);

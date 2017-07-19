@@ -2,9 +2,14 @@ package redrock.invaders.game.screen;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.assets.AssetManager;
+import com.badlogic.gdx.controllers.Controller;
+import com.badlogic.gdx.controllers.ControllerAdapter;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.utils.Array;
+import lombok.Getter;
+import lombok.Setter;
 import org.mini2Dx.core.Mdx;
+import org.mini2Dx.core.di.annotation.Autowired;
 import org.mini2Dx.core.game.GameContainer;
 import org.mini2Dx.core.graphics.Animation;
 import org.mini2Dx.core.graphics.Graphics;
@@ -12,20 +17,27 @@ import org.mini2Dx.core.graphics.Sprite;
 import org.mini2Dx.core.graphics.TextureRegion;
 import org.mini2Dx.core.screen.GameScreen;
 import org.mini2Dx.core.screen.ScreenManager;
+import org.mini2Dx.core.screen.transition.FadeInTransition;
+import org.mini2Dx.core.screen.transition.FadeOutTransition;
 import org.mini2Dx.core.serialization.SerializationException;
 import org.mini2Dx.ui.UiContainer;
 import org.mini2Dx.ui.element.AlignedModal;
 import org.mini2Dx.ui.style.UiTheme;
 import redrock.invaders.game.RedrockInavaders;
+import redrock.invaders.game.assets.ControllerLoader;
 import redrock.invaders.game.gameData.UserData;
 
 /**
  * Created by Velmont on 2017-07-11.
  */
-public class MainScreen extends PeopleScreen {
+public class MainScreen extends InvaderScreen {
     private Animation magiAnimation;
+    private boolean isDone = false;
+    @Setter
+    private ControllerLoader controllerLoader;
     public MainScreen(AssetManager assetManager) {
         super(assetManager);
+        controllerLoader = Mdx.di.getBean(ControllerLoader.class);
     }
 
     @Override
@@ -35,7 +47,6 @@ public class MainScreen extends PeopleScreen {
         try {
 
             AlignedModal modal = Mdx.xml.fromXml(Gdx.files.internal("xml/ui/mainModal.xml").reader(), AlignedModal.class);
-
             uiContainer.add(modal);
         } catch (SerializationException e) {
             e.printStackTrace();
@@ -54,6 +65,19 @@ public class MainScreen extends PeopleScreen {
 
         System.out.println(userData);
         System.out.println(userData.getPerson().getAge());
+
+        if(controllerLoader.getController() != null){
+            controllerLoader.getController().addListener(new ControllerAdapter(){
+                @Override
+                public boolean buttonUp(Controller controller, int buttonIndex){
+                    controller.removeListener(this);
+                    isDone = true;
+                    return false;
+                }
+            });
+        }else{
+            System.out.println("-- ---- --- - - - - -null!");
+        }
     }
 
     @Override
@@ -67,6 +91,15 @@ public class MainScreen extends PeopleScreen {
         }
         uiContainer.update(delta);
         magiAnimation.update(delta);
+
+        if(Gdx.input.justTouched()){
+            isDone = true;
+        }
+
+        if(isDone){
+            screenManager.enterGameScreen(ScreenEnum.GAME_PLAY.ordinal(), new FadeOutTransition(),
+                    new FadeInTransition());
+        }
     }
 
     @Override
